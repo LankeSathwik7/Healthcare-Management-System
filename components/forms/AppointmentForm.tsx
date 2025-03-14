@@ -101,6 +101,11 @@ export const AppointmentForm = ({
             cancellationReason: values.cancellationReason,
           },
           type,
+          timeZone:
+          new Date(values.schedule)
+            .toLocaleString("en-US", { timeZoneName: "short" })
+            .split(" ")
+            .pop() || "UTC",
         };
 
         const updatedAppointment = await updateAppointment(appointmentToUpdate);
